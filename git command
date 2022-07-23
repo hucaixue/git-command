@@ -2,19 +2,14 @@
 gitconfig--list查看所有配置
 
 已提交(committed)
-
 已修改(modified)
-
 已暂存(staged)
 
 初始化git本地仓库：git init
 
 git ls-files  查看文件目录
-
 git add   添加到暂存区
-
 git commit -m '描述'   提交暂存区文件到本地版本库中
-
 git status   显示工作目录和暂存区的状态
 
 git log   显示提交日志信息
@@ -22,7 +17,7 @@ git log -3 --pretty=oneline
 
 当我们输入git log查询git日志时,无法退出按q键
 
-git diff HEAD --git01.txt与版本库内容进行比较结果
+git diff HEAD -- git01.txt与版本库内容进行比较结果（工作区与暂存库比较，不添加add至暂存区，直接commit)
 差异比较说明
 `---`：表示变动前的文件
 `+++`：表示变动后的文件
@@ -36,8 +31,7 @@ HEAD^:将指针指向上一个版本，如果是上上一个就是HEAD^^,上上�
 
 回退到上一版本 执行git reset --hard HEAD^
 回退到上一版本 执行git reset --hard HEAD~1
-
-git reset --hard 216cd6唯一标识id   返回到未来版本
+git reset --hard 216cd6    唯一标识id   返回到未来版本
 
 关闭了当前git命令窗口，Git提供了一个命令用来记录用户操作的每一次命令
 
@@ -46,6 +40,46 @@ git reflog：查看记录在本地的HEAD和分支引用在过去指向的位置
 
 文件提交到版本库后，在工作目录执行手动删除操作后执行命令可以看到Git能够追踪到文件被删除deleted
 如果此时发现文件是被误删除呢，执行命令:
-git checkout --git02.txt
+git checkout --git02.txt     从本地仓库拉到本地盘
+
 如果确定是要执行删除操作执行git rm命令即可:
 git rm git02.txt
+
+
+首先绑定远程地址到本地执行命令:git remote add origin git@github.com:zsyue/git01.git
+
+用本地Git客户端生成SSH公钥与私钥执行命令:ssh-keygen -t rsa -C "worldhuao@gmail.com",
+本地库只须绑定一次，之后可以直接push
+
+检查测试链接执行命令: ssh -T git@github.com
+
+推送远程仓库
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M "main"      /
+git remote add origin git@github.com:hucaixue/SMSBoom.git
+git push -u origin "main"   /    git push -u origin main
+
+
+git checkout branch   切换到指定分支
+git checkout -b new_branch   新建分支并切换到新建分支
+git branch -d branch   删除指定分支
+git branch   查看所有分支,并且*号标记当前所在分支
+git merge branch   合并分支
+git branch -m | -Moldbranch newbranch 
+重命名分支，如果newbranch名字分支已经存在，则需要使用-M强制重命名，否则，使用-m进行重命名。
+
+git log -3 --pretty=oneline
+git log --graph --pretty=oneline
+
+git branch -a   查看本地与远程分支
+
+git push origin branch_name   推送本地分支到远程
+
+git push origin  :remote_branch   删除远程分支(本地分支还在保留)
+
+git checkout -b local_branch origin/remote_branch   拉取远程指定分支并在本地创建分支
+
+
+  
