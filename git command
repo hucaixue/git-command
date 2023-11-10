@@ -1,4 +1,7 @@
 
+
+worldhuao@gmail.com
+
 gitconfig--list查看所有配置
 
 已提交(committed)
@@ -80,6 +83,57 @@ git push origin branch_name   推送本地分支到远程
 git push origin  :remote_branch   删除远程分支(本地分支还在保留)
 
 git checkout -b local_branch origin/remote_branch   拉取远程指定分支并在本地创建分支
+
+git add git01.txt
+
+git commit -m‘修改’
+
+git status
+
+git config --list
+
+cat git01.txt
+
+git diff HEAD -- git01.txt
+
+git log
+
+git log -5 --pretty=oneline
+
+git reset --hard HEAD^
+
+git reset --hard HEAD~3
+
+git reset --hard a4a44
+
+git reflog
+
+git checkout -- git01.txt
+
+git rm git01.txt
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/hucaixue/git03.git
+git push -u origin main
+
+tokens令牌:
+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
+
+如果 push 等操作没有出现输入密码选项，请先输入如下命令，之后就可以看到输入密码选项了
+git config --system --unset credential.helper
+
+将<your_token>换成你自己得到的令牌。<USERNAME>是你自己github的用户名，<REPO>是你的项目名称:
+https://你的令牌@ \color{red}{\text{你的令牌@}}你的令牌@github.com/<USERNAME>/<REPO>.git
+git remote set-url origin https://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@github.com/hucaixue/git03.git
+
+ssh -T git@github.com
+
+
+
+
 
 
   
